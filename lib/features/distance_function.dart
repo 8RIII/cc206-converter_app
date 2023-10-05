@@ -27,13 +27,14 @@ class MyAppBar extends StatelessWidget {
     );
   }
 }
+
 class DistanceFunction extends StatelessWidget {
   const DistanceFunction({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Column(
+    return Scaffold(
+      body: Column(
         children: [
           MyAppBar(
             title: Text(
@@ -55,8 +56,9 @@ class DistanceFunction extends StatelessWidget {
                       'Meter',
                       style: TextStyle(
                         fontSize: 15.0,
-                        color: Colors.black, ),
-                        ),
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -71,17 +73,18 @@ class DistanceFunction extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Color.fromARGB(255, 247, 243, 243),
                   ),
-                    child: Text(
-                      '0',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        color: Colors.black, ),
+                  child: Text(
+                    '0',
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      color: Colors.black,
                     ),
                   ),
                 ),
+              ),
             ],
           ),
-           Row(
+          Row(
             children: [
               Expanded(
                 child: Container(
@@ -95,7 +98,8 @@ class DistanceFunction extends StatelessWidget {
                       'Kilometer',
                       style: TextStyle(
                         fontSize: 15.0,
-                        color: Colors.black, ),
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
@@ -111,17 +115,18 @@ class DistanceFunction extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Color.fromARGB(255, 247, 243, 243),
                   ),
-                    child: Text(
-                      '0',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        color: Colors.black, ),
+                  child: Text(
+                    '0',
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      color: Colors.black,
                     ),
                   ),
                 ),
+              ),
             ],
           ),
-            Row(
+          Row(
             children: [
               Expanded(
                 child: Container(
@@ -130,13 +135,15 @@ class DistanceFunction extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Color.fromARGB(179, 151, 147, 147),
                   ),
-                    child: Text('',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        color: Colors.black,  ),
+                  child: Text(
+                    '',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.black,
                     ),
                   ),
                 ),
+              ),
             ],
           ),
         ],
