@@ -1,4 +1,4 @@
-import 'package:cc206_converter_app/feature1/home_page.dart';
+import 'package:cc206_converter_app/features/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
