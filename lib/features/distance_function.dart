@@ -7,10 +7,11 @@ class MyAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 56, // in logical pixels
+      height: 56,
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      decoration: BoxDecoration(color: Color.fromARGB(255, 169, 172, 173)),
-      // Row is a horizontal, linear layout.
+      decoration: BoxDecoration(
+        color: Colors.grey[600],
+      ),
       child: Row(
         children: [
           const IconButton(
@@ -28,8 +29,96 @@ class MyAppBar extends StatelessWidget {
   }
 }
 
-class DistanceFunction extends StatelessWidget {
-  const DistanceFunction({super.key});
+class NumberPad extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Color.fromARGB(255, 219, 215, 215),
+      padding: EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              NumberButton("C", color: Colors.grey[600]),
+              NumberButton("-", color: Colors.grey[600]),
+              NumberButton("AC", color: Colors.red),
+            ]
+          ),
+          Row(
+            children: [
+              NumberButton("7"),
+              NumberButton("8"),
+              NumberButton("9"),
+            ],
+          ),
+          Row(
+            children: [
+              NumberButton("4"),
+              NumberButton("5"),
+              NumberButton("4"),
+            ],
+          ),
+          Row(
+            children: [
+              NumberButton("3"),
+              NumberButton("2"),
+              NumberButton("1"),
+            ],
+          ),
+          Row(
+            children: [
+              NumberButton("0"),
+              NumberButton("."),
+              NumberButton("=", color: Colors.yellow[900]),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class NumberButton extends StatelessWidget {
+  final String text;
+  final Color? color;
+
+  NumberButton(this.text, {this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        margin: EdgeInsets.all(4.0),
+        child: ElevatedButton(
+          onPressed: () {
+          
+          },
+          style: ElevatedButton.styleFrom(
+            primary: color ?? Colors.indigo[900], 
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4.0), 
+            ),
+          ),
+          child: Text(
+            text,
+            style: TextStyle(fontSize: 35, color: Colors.white),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class DistanceFunction extends StatefulWidget {
+  const DistanceFunction({Key? key}) : super(key: key);
+
+  @override
+  _DistanceFunctionState createState() => _DistanceFunctionState();
+}
+
+class _DistanceFunctionState extends State<DistanceFunction> {
+  String selectedUnit = "Meter"; 
 
   @override
   Widget build(BuildContext context) {
@@ -49,21 +138,36 @@ class DistanceFunction extends StatelessWidget {
                   padding: EdgeInsets.all(8.0),
                   margin: EdgeInsets.symmetric(vertical: 0),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 219, 215, 215),
+                    color: Color.fromARGB(255, 219, 215, 215)
                   ),
-                  child: Center(
-                    child: Text(
-                      'Meter',
-                      style: TextStyle(
-                        fontSize: 15.0,
-                        color: Colors.black,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      DropdownButton<String>(
+                        value: selectedUnit,
+                        items: ["Meter", "Kilometer", "Centimeter","Millimeter","Inch","Yards","Feet"].map((String unit) {
+                          return DropdownMenuItem<String>(
+                            value: unit,
+                            child: Text(unit),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedUnit = newValue!;
+                          });
+                        },
                       ),
+                     Icon(
+                        Icons.shuffle,
+                        size: 30, 
                     ),
+                    ],
                   ),
                 ),
               ),
             ],
           ),
+          
           Row(
             children: [
               Expanded(
@@ -84,6 +188,7 @@ class DistanceFunction extends StatelessWidget {
               ),
             ],
           ),
+          
           Row(
             children: [
               Expanded(
@@ -93,20 +198,34 @@ class DistanceFunction extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Color.fromARGB(255, 219, 215, 215),
                   ),
-                  child: Center(
-                    child: Text(
-                      'Kilometer',
-                      style: TextStyle(
-                        fontSize: 15.0,
-                        color: Colors.black,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      DropdownButton<String>(
+                        value: selectedUnit,
+                        items: ["Meter", "Kilometer", "Centimeter","Millimeter","Inch","Yards","Feet"].map((String unit) {
+                          return DropdownMenuItem<String>(
+                            value: unit,
+                            child: Text(unit),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedUnit = newValue!;
+                          });
+                        },
                       ),
-                    ),
+                      Icon(
+                        Icons.shuffle,
+                        size: 30,
+                      ),
+                    ],
                   ),
                 ),
               ),
             ],
           ),
-          Row(
+           Row(
             children: [
               Expanded(
                 child: Container(
@@ -126,19 +245,20 @@ class DistanceFunction extends StatelessWidget {
               ),
             ],
           ),
+          NumberPad(),
           Row(
             children: [
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.all(130.0),
+                  padding: EdgeInsets.all(20.0),
                   margin: EdgeInsets.symmetric(vertical: 0),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(179, 151, 147, 147),
+                    color: Color.fromARGB(255, 247, 243, 243),
                   ),
                   child: Text(
                     '',
                     style: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: 25.0,
                       color: Colors.black,
                     ),
                   ),
@@ -151,3 +271,4 @@ class DistanceFunction extends StatelessWidget {
     );
   }
 }
+
