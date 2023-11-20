@@ -1,34 +1,5 @@
 import 'package:flutter/material.dart';
 
-class MyAppBar extends StatelessWidget {
-  const MyAppBar({required this.title, super.key});
-  final Widget title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 56,
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      decoration: BoxDecoration(
-        color: Colors.grey[600],
-      ),
-      child: Row(
-        children: [
-          const IconButton(
-            icon: Icon(Icons.arrow_back),
-            iconSize: 35,
-            tooltip: 'Exit',
-            onPressed: null,
-          ),
-          Expanded(
-            child: title,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class NumberPad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -37,13 +8,11 @@ class NumberPad extends StatelessWidget {
       padding: EdgeInsets.all(8.0),
       child: Column(
         children: [
-          Row(
-            children: [
-              NumberButton("C", color: Colors.grey[600]),
-              NumberButton("-", color: Colors.grey[600]),
-              NumberButton("AC", color: Colors.red),
-            ]
-          ),
+          Row(children: [
+            NumberButton("C", color: Colors.grey[600]),
+            NumberButton("-", color: Colors.grey[600]),
+            NumberButton("AC", color: Colors.red),
+          ]),
           Row(
             children: [
               NumberButton("7"),
@@ -90,13 +59,11 @@ class NumberButton extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.all(4.0),
         child: ElevatedButton(
-          onPressed: () {
-          
-          },
+          onPressed: () {},
           style: ElevatedButton.styleFrom(
-            primary: color ?? Colors.indigo[900], 
+            primary: color ?? Colors.indigo[900],
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4.0), 
+              borderRadius: BorderRadius.circular(4.0),
             ),
           ),
           child: Text(
@@ -109,7 +76,6 @@ class NumberButton extends StatelessWidget {
   }
 }
 
-
 class DistanceFunction extends StatefulWidget {
   const DistanceFunction({Key? key}) : super(key: key);
 
@@ -118,92 +84,76 @@ class DistanceFunction extends StatefulWidget {
 }
 
 class _DistanceFunctionState extends State<DistanceFunction> {
-  String selectedUnit = "Meter"; 
+  String selectedUnit = "Meter";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      appBar: AppBar(
+        title: const Text('Distance'),
+        backgroundColor: Colors.grey[600],
+      ),
+      drawer: Drawer(
+          child: ListView(
         children: [
-          MyAppBar(
-            title: Text(
+          Container(
+            //Insert lang gi icon kung kinahanglan
+            margin: EdgeInsets.only(bottom: 10),
+            padding: EdgeInsets.all(20),
+            color: Colors.grey[600],
+            child: Text(
               'Distance',
-              style: Theme.of(context).primaryTextTheme.titleLarge,
+              style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),
+          ListTile(
+            leading: const Icon(Icons.home), //Change icons here
+            title: const Text('home'),
+            onTap: () {}, //Insert navigation action here
+          ),
+          const Divider(
+            height: 20,
+            thickness: 1,
+            indent: 20,
+            endIndent: 20,
+            color: Colors.black,
+          ),
+          ListTile(
+            leading: const Icon(Icons.looks_one), //Change icons here
+            title: const Text('Navi1'),
+            onTap: () {}, //Insert navigation action here
+          ),
+          ListTile(
+            leading: const Icon(Icons.looks_two), //Change icons here
+            title: const Text('Navi2'),
+            onTap: () {}, //Insert navigation action here
+          )
+        ],
+      )),
+      body: Column(
+        children: [
           Row(
             children: [
               Expanded(
                 child: Container(
                   padding: EdgeInsets.all(8.0),
                   margin: EdgeInsets.symmetric(vertical: 0),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 219, 215, 215)
-                  ),
+                  decoration:
+                      BoxDecoration(color: Color.fromARGB(255, 219, 215, 215)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       DropdownButton<String>(
                         value: selectedUnit,
-                        items: ["Meter", "Kilometer", "Centimeter","Millimeter","Inch","Yards","Feet"].map((String unit) {
-                          return DropdownMenuItem<String>(
-                            value: unit,
-                            child: Text(unit),
-                          );
-                        }).toList(),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedUnit = newValue!;
-                          });
-                        },
-                      ),
-                     Icon(
-                        Icons.shuffle,
-                        size: 30, 
-                    ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(20.0),
-                  margin: EdgeInsets.symmetric(vertical: 0),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 247, 243, 243),
-                  ),
-                  child: Text(
-                    '0',
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(8.0),
-                  margin: EdgeInsets.symmetric(vertical: 0),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 219, 215, 215),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      DropdownButton<String>(
-                        value: selectedUnit,
-                        items: ["Meter", "Kilometer", "Centimeter","Millimeter","Inch","Yards","Feet"].map((String unit) {
+                        items: [
+                          "Meter",
+                          "Kilometer",
+                          "Centimeter",
+                          "Millimeter",
+                          "Inch",
+                          "Yards",
+                          "Feet"
+                        ].map((String unit) {
                           return DropdownMenuItem<String>(
                             value: unit,
                             child: Text(unit),
@@ -225,7 +175,71 @@ class _DistanceFunctionState extends State<DistanceFunction> {
               ),
             ],
           ),
-           Row(
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(20.0),
+                  margin: EdgeInsets.symmetric(vertical: 0),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 247, 243, 243),
+                  ),
+                  child: Text(
+                    '0',
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(8.0),
+                  margin: EdgeInsets.symmetric(vertical: 0),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 219, 215, 215),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      DropdownButton<String>(
+                        value: selectedUnit,
+                        items: [
+                          "Meter",
+                          "Kilometer",
+                          "Centimeter",
+                          "Millimeter",
+                          "Inch",
+                          "Yards",
+                          "Feet"
+                        ].map((String unit) {
+                          return DropdownMenuItem<String>(
+                            value: unit,
+                            child: Text(unit),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedUnit = newValue!;
+                          });
+                        },
+                      ),
+                      Icon(
+                        Icons.shuffle,
+                        size: 30,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
             children: [
               Expanded(
                 child: Container(
@@ -271,4 +285,3 @@ class _DistanceFunctionState extends State<DistanceFunction> {
     );
   }
 }
-
