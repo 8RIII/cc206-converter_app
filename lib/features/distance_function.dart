@@ -1,3 +1,4 @@
+import 'package:cc206_converter_app/features/components/distance_func_drawer.dart';
 import 'package:flutter/material.dart';
 
 class NumberPad extends StatelessWidget {
@@ -93,44 +94,7 @@ class _DistanceFunctionState extends State<DistanceFunction> {
         title: const Text('Distance'),
         backgroundColor: Colors.grey[600],
       ),
-      drawer: Drawer(
-          child: ListView(
-        children: [
-          Container(
-            //Insert lang gi icon kung kinahanglan
-            margin: EdgeInsets.only(bottom: 10),
-            padding: EdgeInsets.all(20),
-            color: Colors.grey[600],
-            child: Text(
-              'Distance',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.home), //Change icons here
-            title: const Text('home'),
-            onTap: () {}, //Insert navigation action here
-          ),
-          const Divider(
-            height: 20,
-            thickness: 1,
-            indent: 20,
-            endIndent: 20,
-            color: Colors.black,
-          ),
-          //Future Destinations
-          // ListTile(
-          //   leading: const Icon(Icons.looks_one), //Change icons here
-          //   title: const Text('Navi1'),
-          //   onTap: () {}, //Insert navigation action here
-          // ),
-          // ListTile(
-          //   leading: const Icon(Icons.looks_two), //Change icons here
-          //   title: const Text('Navi2'),
-          //   onTap: () {}, //Insert navigation action here
-          // )
-        ],
-      )),
+      drawer: distance_drawer(),
       body: Column(
         children: [
           Row(
