@@ -118,16 +118,17 @@ class _DistanceFunctionState extends State<DistanceFunction> {
             endIndent: 20,
             color: Colors.black,
           ),
-          ListTile(
-            leading: const Icon(Icons.looks_one), //Change icons here
-            title: const Text('Navi1'),
-            onTap: () {}, //Insert navigation action here
-          ),
-          ListTile(
-            leading: const Icon(Icons.looks_two), //Change icons here
-            title: const Text('Navi2'),
-            onTap: () {}, //Insert navigation action here
-          )
+          //Future Destinations
+          // ListTile(
+          //   leading: const Icon(Icons.looks_one), //Change icons here
+          //   title: const Text('Navi1'),
+          //   onTap: () {}, //Insert navigation action here
+          // ),
+          // ListTile(
+          //   leading: const Icon(Icons.looks_two), //Change icons here
+          //   title: const Text('Navi2'),
+          //   onTap: () {}, //Insert navigation action here
+          // )
         ],
       )),
       body: Column(
