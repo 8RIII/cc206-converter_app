@@ -80,6 +80,35 @@ class CalculatorButton extends StatelessWidget {
   }
 }
 
+class CalculatorIconButton extends StatelessWidget {
+  final IconData icon;
+  final Color? color;
+  final double height;
+
+  CalculatorIconButton(this.icon, {this.color, this.height = 50.0});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        height: height,
+        margin: EdgeInsets.all(4.0),
+        child: ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            primary: color ?? const Color.fromRGBO(255, 255, 255, 1),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4.0),
+            ),
+          ),
+          child: Icon(icon, size: 25, color: Colors.black),
+        ),
+      ),
+    );
+  }
+}
+
+
 class DistanceFunction extends StatefulWidget {
   const DistanceFunction({Key? key}) : super(key: key);
 
@@ -224,27 +253,8 @@ class _DistanceFunctionState extends State<DistanceFunction> {
               ),
             ],
           ),
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(20.0),
-                  margin: EdgeInsets.symmetric(vertical: 0),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 247, 243, 243),
-                  ),
-                  child: Text(
-                    '0',
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          NumberPad(),
+
+           CalculatorKeypad(),
           Row(
             children: [
               Expanded(
