@@ -10,7 +10,7 @@ class distance_drawer extends StatelessWidget {
           //Insert lang gi icon kung kinahanglan
           margin: EdgeInsets.only(bottom: 10),
           padding: EdgeInsets.all(20),
-          color: Colors.grey[600],
+          color: Colors.blue[600],
           child: Text(
             'Distance',
             style: TextStyle(color: Colors.white, fontSize: 20),
@@ -18,7 +18,7 @@ class distance_drawer extends StatelessWidget {
         ),
         ListTile(
           leading: const Icon(Icons.home), //Change icons here
-          title: const Text('home'),
+          title: const Text('Home'),
           onTap: () {}, //Insert navigation action here
         ),
         const Divider(
