@@ -65,7 +65,7 @@ class CalculatorButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            primary: color ?? const Color.fromRGBO(221, 221, 221, 1),
+            primary: color ?? const Color.fromRGBO(255, 255, 255, 1),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4.0),
             ),
@@ -96,7 +96,7 @@ class CalculatorIconButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            primary: color ?? const Color.fromRGBO(221, 221, 221, 1),
+            primary: color ?? const Color.fromRGBO(255, 255, 255, 1),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4.0),
             ),
