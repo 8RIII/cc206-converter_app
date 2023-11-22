@@ -54,7 +54,7 @@ class CalculatorButton extends StatelessWidget {
   final double height;
 
   CalculatorButton(this.text,
-      {this.color, this.fontSize = 25, this.height = 50});
+      {this.color, this.fontSize = 25, this.height = 50,});
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,10 @@ class CalculatorButton extends StatelessWidget {
           ),
           child: Text(
             text,
-            style: TextStyle(fontSize: fontSize, color: Colors.black),
+            style: TextStyle(fontSize: fontSize, 
+            color: Colors.black,
+            fontFamily: 'Lato',
+            ),
           ),
         ),
       ),
