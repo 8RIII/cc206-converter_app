@@ -1,23 +1,29 @@
-import 'package:cc206_converter_app/features/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:converterapp/theme/theme_helper.dart';
+import 'package:converterapp/routes/app_routes.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
+  ///Please update theme as per your need if required.
+  ThemeHelper().changeTheme('primary');
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomePage(title: 'Home Page'),
+      theme: theme,
+      title: 'converterapp',
+      debugShowCheckedModeBanner: false,
+      initialRoute: AppRoutes.homePageScreen,
+      routes: AppRoutes.routes,
     );
-    }
-    }
+  }
+}
