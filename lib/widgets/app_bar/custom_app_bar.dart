@@ -1,4 +1,4 @@
-import 'package:converterapp/core/app_export.dart';
+import 'package:converter_app/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -34,7 +34,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      toolbarHeight: height ?? 85.v,
+      toolbarHeight: height ?? 118.v,
       automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
       flexibleSpace: _getStyle(),
@@ -50,13 +50,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size(
         mediaQueryData.size.width,
-        height ?? 85.v,
+        height ?? 118.v,
       );
   _getStyle() {
     switch (styleType) {
       case Style.bgFill:
         return Container(
-          height: 85.v,
+          height: 118.v,
           width: double.maxFinite,
           decoration: BoxDecoration(
             color: appTheme.blue200,

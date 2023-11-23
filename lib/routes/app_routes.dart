@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:converterapp/presentation/home_page_screen/home_page_screen.dart';
+import 'package:converter_app/features/home_screen/home_screen.dart';
+import 'package:converter_app/features/distance_function/distance_function.dart';
+
 
 class AppRoutes {
-  static const String homePageScreen = '/home_page_screen';
+  static const String homeScreen = '/home_screen';
+  static const String Distance = '/distance';
 
   static Map<String, WidgetBuilder> routes = {
-    homePageScreen: (context) => HomePageScreen()
+    homeScreen: (context) => HomeScreen(),
+    Distance: (context) => DistanceFunction()
   };
 }

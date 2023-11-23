@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:converterapp/core/app_export.dart';
+import 'package:converter_app/core/app_export.dart';
 
 class AppDecoration {
   // Fill decorations
@@ -13,8 +13,8 @@ class AppDecoration {
 
 class BorderRadiusStyle {
   // Rounded borders
-  static BorderRadius get roundedBorder3 => BorderRadius.circular(
-        3.h,
+  static BorderRadius get roundedBorder4 => BorderRadius.circular(
+        4.h,
       );
 }
 

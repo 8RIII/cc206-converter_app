@@ -1,4 +1,4 @@
-import 'package:converterapp/core/app_export.dart';
+import 'package:converter_app/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -28,7 +28,7 @@ class AppbarTitle extends StatelessWidget {
         padding: margin ?? EdgeInsets.zero,
         child: Text(
           text,
-          style: theme.textTheme.titleLarge!.copyWith(
+          style: theme.textTheme.headlineMedium!.copyWith(
             color: appTheme.indigo800,
           ),
         ),

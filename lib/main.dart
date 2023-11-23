@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:converterapp/theme/theme_helper.dart';
-import 'package:converterapp/routes/app_routes.dart';
+import 'package:converter_app/theme/theme_helper.dart';
+import 'package:converter_app/routes/app_routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,7 +10,6 @@ void main() {
     DeviceOrientation.portraitUp,
   ]);
 
-  ///Please update theme as per your need if required.
   ThemeHelper().changeTheme('primary');
   runApp(MyApp());
 }
@@ -20,9 +19,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
-      title: 'converterapp',
+      title: 'converter_app',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.homePageScreen,
+      initialRoute: AppRoutes.Distance,
       routes: AppRoutes.routes,
     );
   }

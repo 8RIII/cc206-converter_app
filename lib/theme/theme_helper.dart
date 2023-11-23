@@ -62,17 +62,17 @@ class ThemeHelper {
 /// Class containing the supported text theme styles.
 class TextThemes {
   static TextTheme textTheme(ColorScheme colorScheme) => TextTheme(
-        bodyLarge: TextStyle(
+        headlineMedium: TextStyle(
           color: appTheme.indigo800,
-          fontSize: 19.fSize,
+          fontSize: 29.fSize,
           fontFamily: 'Lato',
-          fontWeight: FontWeight.w300,
+          fontWeight: FontWeight.w700,
         ),
         titleLarge: TextStyle(
           color: appTheme.indigo800,
-          fontSize: 21.fSize,
+          fontSize: 23.fSize,
           fontFamily: 'Lato',
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w300,
         ),
       );
 }
