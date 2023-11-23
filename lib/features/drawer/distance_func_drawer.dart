@@ -1,3 +1,4 @@
+import 'package:converter_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class distance_drawer extends StatelessWidget {
@@ -19,7 +20,7 @@ class distance_drawer extends StatelessWidget {
         ListTile(
           leading: const Icon(Icons.home), //Change icons here
           title: const Text('Home'),
-          onTap: () {}, //Insert navigation action here
+          onTap: () {Navigator.pushNamed(context,AppRoutes.homeScreen);}, //Insert navigation action here
         ),
         const Divider(
           height: 20,

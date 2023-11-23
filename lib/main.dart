@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: theme,
       title: 'converter_app',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.Distance,
+      initialRoute: AppRoutes.homeScreen,
       routes: AppRoutes.routes,
     );
   }

@@ -1,6 +1,6 @@
 import 'package:converter_app/core/app_export.dart';
+import 'package:converter_app/features/drawer/distance_func_drawer.dart';
 import 'package:flutter/material.dart';
-
 
 
 // ignore: must_be_immutable
@@ -24,7 +24,8 @@ class AppbarLeadingImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        onTap!.call();
+       Scaffold.of(context).openDrawer();
+       drawer: distance_drawer();
       },
       child: Padding(
         padding: margin ?? EdgeInsets.zero,

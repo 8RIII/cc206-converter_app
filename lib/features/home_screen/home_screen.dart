@@ -57,9 +57,9 @@ class HomeScreen extends StatelessWidget {
                   _buildLengthButton(
                     context,
                     userImage: ImageConstant.imgImage16,
-                    something: "Length",
+                    something: "Distance",
                     onTap: (){
-                      print("Speed button tapped!");
+                      Navigator.pushNamed(context,AppRoutes.Distance);
                       },
                   ),
                   SizedBox(height: 16.v),
