@@ -74,7 +74,6 @@ class CalculatorButton extends StatelessWidget {
             text,
             style: TextStyle(fontSize: fontSize, 
             color: Colors.black,
-            fontFamily: 'Lato',
             ),
           ),
         ),
@@ -132,7 +131,7 @@ class _DistanceFunctionState extends State<DistanceFunction> {
             Padding(
               padding: const EdgeInsets.only(right: 10),
               child: Text(
-                'Distance',
+                'Length',
                 style: TextStyle(fontSize: 25),
               ),
             ),
