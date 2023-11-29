@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class CalculatorKeypad extends StatelessWidget {
   final Function(String) passInput;
-  ConvertFunct CF = ConvertFunct();
+  final ConvertFunct CF = ConvertFunct();
 
   CalculatorKeypad({required this.passInput});
 
