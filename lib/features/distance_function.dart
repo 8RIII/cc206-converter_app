@@ -1,4 +1,4 @@
-import 'package:cc206_converter_app/features/components/distance_func_drawer.dart';
+import 'package:converter_app/features/components/distance_func_drawer.dart';
 import 'package:flutter/material.dart';
 
 class CalculatorKeypad extends StatelessWidget {
@@ -53,8 +53,12 @@ class CalculatorButton extends StatelessWidget {
   final double fontSize;
   final double height;
 
-  CalculatorButton(this.text,
-      {this.color, this.fontSize = 25, this.height = 50,});
+  CalculatorButton(
+    this.text, {
+    this.color,
+    this.fontSize = 25,
+    this.height = 50,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +76,9 @@ class CalculatorButton extends StatelessWidget {
           ),
           child: Text(
             text,
-            style: TextStyle(fontSize: fontSize, 
-            color: Colors.black,
+            style: TextStyle(
+              fontSize: fontSize,
+              color: Colors.black,
             ),
           ),
         ),
@@ -109,7 +114,6 @@ class CalculatorIconButton extends StatelessWidget {
     );
   }
 }
-
 
 class DistanceFunction extends StatefulWidget {
   const DistanceFunction({Key? key}) : super(key: key);
@@ -168,9 +172,9 @@ class _DistanceFunctionState extends State<DistanceFunction> {
                           padding: EdgeInsets.all(30.0),
                           margin: EdgeInsets.all(5.0),
                           decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(13.0),
-                  ),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(13.0),
+                          ),
                           child: Center(
                             child: Text(
                               '',
@@ -185,9 +189,9 @@ class _DistanceFunctionState extends State<DistanceFunction> {
                           padding: EdgeInsets.all(30.0),
                           margin: EdgeInsets.all(30.0),
                           decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(13.0),
-                  ),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(13.0),
+                          ),
                           child: Center(
                             child: Text(
                               '',
@@ -202,7 +206,6 @@ class _DistanceFunctionState extends State<DistanceFunction> {
               ),
             ],
           ),
-
           Row(
             children: [
               Expanded(
@@ -221,9 +224,9 @@ class _DistanceFunctionState extends State<DistanceFunction> {
                           padding: EdgeInsets.all(30.0),
                           margin: EdgeInsets.all(5.0),
                           decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(13.0),
-                            ),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(13.0),
+                          ),
                           child: Center(
                             child: Text(
                               '',
@@ -238,9 +241,9 @@ class _DistanceFunctionState extends State<DistanceFunction> {
                           padding: EdgeInsets.all(30.0),
                           margin: EdgeInsets.all(30.0),
                           decoration: BoxDecoration(
-                               color: Colors.white,
-                               borderRadius: BorderRadius.circular(13.0),
-                            ),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(13.0),
+                          ),
                           child: Center(
                             child: Text(
                               '',
@@ -255,8 +258,7 @@ class _DistanceFunctionState extends State<DistanceFunction> {
               ),
             ],
           ),
-
-           CalculatorKeypad(),
+          CalculatorKeypad(),
           Row(
             children: [
               Expanded(
