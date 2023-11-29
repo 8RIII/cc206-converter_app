@@ -1,9 +1,9 @@
 import 'package:converter/converter.dart';
 
-class ConverterApp {
-  late String input_value, output_value;
-
-  int areafunc(num input, String in_unit, out_unit) {
-    return 12;
+class ConvertFunct {
+  num conLength(num input, String in_unit, out_unit) {
+    Length initial = Length(input, in_unit);
+    num result = initial.valueIn(out_unit);
+    return result;
   }
 }

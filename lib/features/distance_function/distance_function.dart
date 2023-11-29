@@ -1,9 +1,11 @@
+import 'package:converter_app/features/converter_codes/converter_class.dart';
 import 'package:converter_app/features/drawer/distance_func_drawer.dart';
 import 'package:converter_app/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 class CalculatorKeypad extends StatelessWidget {
   final Function(String) passInput;
+  ConvertFunct CF = ConvertFunct();
 
   CalculatorKeypad({required this.passInput});
 
