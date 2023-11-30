@@ -268,6 +268,15 @@ class _DistanceFunctionState extends State<DistanceFunction> {
 
   void swap() {
     print('swap');
+    setState(() {
+      String placeholder = input_value;
+      input_value = output_value;
+      output_value = placeholder;
+
+      placeholder = in_unit;
+      in_unit = out_unit;
+      out_unit = placeholder;
+    });
   }
 
   void addInput(String input) {
