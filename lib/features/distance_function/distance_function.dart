@@ -228,21 +228,38 @@ class DistanceFunction extends StatefulWidget {
 }
 
 class _DistanceFunctionState extends State<DistanceFunction> {
+  final ConvertFunct CF = ConvertFunct();
   String selectedUnit = "Meter";
-  String input_value = '';
+  String input_value = '0';
+  String output_value = '0';
+  String in_unit = 'm';
+  String out_unit = 'km';
+
   void equals() {
     print('equals');
+    setState(() {
+      output_value =
+          CF.conLength(num.parse(input_value), in_unit, out_unit).toString();
+    });
   }
 
   void clear() {
     print('clear');
     setState(() {
-      input_value = '';
+      input_value = '0';
+      output_value = '0';
     });
   }
 
   void backSpace() {
     print('backspace');
+    setState(() {
+      if (input_value.length == 1) {
+        input_value = '0';
+      } else if (input_value != '0') {
+        input_value = input_value.substring(0, input_value.length - 1);
+      }
+    });
   }
 
   void undo() {
@@ -255,7 +272,17 @@ class _DistanceFunctionState extends State<DistanceFunction> {
 
   void addInput(String input) {
     setState(() {
-      input_value += input;
+      if (input != '.') {
+        if (input_value == '0') {
+          input_value = input;
+        } else {
+          input_value += input;
+        }
+      } else {
+        if (!input_value.contains('.')) {
+          input_value += input;
+        }
+      }
     });
   }
 
@@ -281,6 +308,7 @@ class _DistanceFunctionState extends State<DistanceFunction> {
     }
   }
 
+//Dropdown variables
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -343,19 +371,34 @@ class _DistanceFunctionState extends State<DistanceFunction> {
                       Expanded(
                         child: Container(
                           //color: Colors.white,
-                          padding: EdgeInsets.all(30.0),
+                          padding: EdgeInsets.all(14.0),
                           margin: EdgeInsets.all(30.0),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(13.0),
                           ),
                           child: Center(
-                            child: Text(
-                              //Input Units===========================================
-                              'Test4',
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
+                              child: DropdownButton<String>(
+                            value: in_unit,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                in_unit = newValue!;
+                              });
+                            },
+                            items: CF.length_unit
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          )
+                              // child: Text(
+                              //   //Input Units===========================================
+                              //   'Test4',
+                              //   style: TextStyle(color: Colors.black),
+                              // ),
+                              ),
                         ),
                       ),
                     ],
@@ -388,7 +431,7 @@ class _DistanceFunctionState extends State<DistanceFunction> {
                           child: Center(
                             child: Text(
                               //Output Values===========================================
-                              'Test1',
+                              output_value,
                               style: TextStyle(color: Colors.black),
                             ),
                           ),
@@ -397,19 +440,28 @@ class _DistanceFunctionState extends State<DistanceFunction> {
                       Expanded(
                         child: Container(
                           //color: Colors.white,
-                          padding: EdgeInsets.all(30.0),
+                          padding: EdgeInsets.all(14.0),
                           margin: EdgeInsets.all(30.0),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(13.0),
                           ),
                           child: Center(
-                            child: Text(
-                              //Output Units===========================================
-                              'Test2',
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
+                              child: DropdownButton<String>(
+                            value: out_unit,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                out_unit = newValue!;
+                              });
+                            },
+                            items: CF.length_unit
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          )),
                         ),
                       ),
                     ],
