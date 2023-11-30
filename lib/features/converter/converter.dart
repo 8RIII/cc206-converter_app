@@ -1,233 +1,16 @@
+import 'package:converter_app/features/components/calculator_keypad.dart';
 import 'package:converter_app/features/converter_codes/converter_class.dart';
-import 'package:converter_app/features/drawer/distance_func_drawer.dart';
-import 'package:converter_app/core/app_export.dart';
+import 'package:converter_app/features/drawer/converter_drawer.dart';
 import 'package:flutter/material.dart';
 
-class CalculatorKeypad extends StatelessWidget {
-  final Function(String) passInput;
-  final ConvertFunct CF = ConvertFunct();
-
-  CalculatorKeypad({required this.passInput});
+class Converter extends StatefulWidget {
+  const Converter({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    mediaQueryData = MediaQuery.of(context);
-    return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: [
-            Container(
-              color: Color.fromRGBO(231, 236, 239, 1),
-              padding: EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      CalculatorButton(
-                        "7",
-                        onPressed: () {
-                          passInput("8");
-                        },
-                      ),
-                      CalculatorButton(
-                        "8",
-                        onPressed: () {
-                          passInput("8");
-                        },
-                      ),
-                      CalculatorButton(
-                        "9",
-                        onPressed: () {
-                          passInput("9");
-                        },
-                      ),
-                      CalculatorIconButton(
-                        Icons.backspace,
-                        onPressed: () {
-                          passInput("B");
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      CalculatorButton(
-                        "4",
-                        onPressed: () {
-                          passInput("4");
-                        },
-                      ),
-                      CalculatorButton(
-                        "5",
-                        onPressed: () {
-                          passInput("5");
-                        },
-                      ),
-                      CalculatorButton(
-                        "6",
-                        onPressed: () {
-                          passInput("6");
-                        },
-                      ),
-                      CalculatorIconButton(
-                        Icons.undo,
-                        onPressed: () {
-                          passInput("U");
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      CalculatorButton(
-                        "1",
-                        onPressed: () {
-                          passInput("1");
-                        },
-                      ),
-                      CalculatorButton(
-                        "2",
-                        onPressed: () {
-                          passInput("2");
-                        },
-                      ),
-                      CalculatorButton(
-                        "3",
-                        onPressed: () {
-                          passInput("3");
-                        },
-                      ),
-                      CalculatorIconButton(
-                        Icons.swap_horiz,
-                        onPressed: () {
-                          passInput("S");
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      CalculatorButton(
-                        ".",
-                        onPressed: () {
-                          passInput(".");
-                        },
-                      ),
-                      CalculatorButton(
-                        "0",
-                        onPressed: () {
-                          passInput("0");
-                        },
-                      ),
-                      CalculatorButton(
-                        "C",
-                        onPressed: () {
-                          passInput("C");
-                        },
-                      ),
-                      CalculatorButton(
-                        "=",
-                        onPressed: () {
-                          passInput("=");
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  _ConverterState createState() => _ConverterState();
 }
 
-class CalculatorButton extends StatelessWidget {
-  final String text;
-  final Color? color;
-  final double fontSize;
-  final double height;
-  final VoidCallback onPressed;
-
-  CalculatorButton(this.text,
-      {this.color,
-      this.fontSize = 25,
-      this.height = 50,
-      required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        height: height,
-        margin: EdgeInsets.all(4.0),
-        child: ElevatedButton(
-          onPressed: () {
-            onPressed();
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: color ?? const Color.fromRGBO(255, 255, 255, 1),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4.0),
-            ),
-          ),
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: fontSize,
-              color: Colors.black,
-              fontFamily: 'Lato',
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CalculatorIconButton extends StatelessWidget {
-  final IconData icon;
-  final Color? color;
-  final double height;
-  final VoidCallback onPressed;
-
-  CalculatorIconButton(this.icon,
-      {this.color, this.height = 50.0, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: SingleChildScrollView(
-        child: Container(
-          height: height,
-          margin: EdgeInsets.all(4.0),
-          child: ElevatedButton(
-            onPressed: () {
-              onPressed();
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: color ?? const Color.fromRGBO(255, 255, 255, 1),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4.0),
-              ),
-            ),
-            child: Icon(icon, size: 25, color: Colors.black),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class DistanceFunction extends StatefulWidget {
-  const DistanceFunction({Key? key}) : super(key: key);
-
-  @override
-  _DistanceFunctionState createState() => _DistanceFunctionState();
-}
-
-class _DistanceFunctionState extends State<DistanceFunction> {
+class _ConverterState extends State<Converter> {
   final ConvertFunct CF = ConvertFunct();
   String selectedUnit = "Meter";
   String input_value = '0';
@@ -344,7 +127,7 @@ class _DistanceFunctionState extends State<DistanceFunction> {
         ),
         backgroundColor: Color.fromRGBO(39, 76, 119, 1.0),
       ),
-      drawer: distance_drawer(),
+      drawer: converter_drawer(),
       body: Column(
         children: [
           Row(

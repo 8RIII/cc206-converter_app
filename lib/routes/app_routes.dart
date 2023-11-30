@@ -10,6 +10,6 @@ class AppRoutes {
 
   static Map<String, WidgetBuilder> routes = {
     homeScreen: (context) => HomeScreen(),
-    Distance: (context) => DistanceFunction()
+    Distance: (context) => Converter()
   };
 }
