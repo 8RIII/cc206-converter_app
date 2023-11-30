@@ -4,25 +4,35 @@ import 'package:converter_app/features/drawer/converter_drawer.dart';
 import 'package:flutter/material.dart';
 
 class Converter extends StatefulWidget {
-  const Converter({Key? key}) : super(key: key);
+  final String measurement;
+  const Converter({Key? key, required this.measurement}) : super(key: key);
 
   @override
-  _ConverterState createState() => _ConverterState();
+  _ConverterState createState() => _ConverterState(measurement);
 }
 
 class _ConverterState extends State<Converter> {
-  final ConvertFunct CF = ConvertFunct();
-  String selectedUnit = "Meter";
+  final String measurement;
+  late String title;
+  late ConvertFunct CF;
+  late String selectedUnit;
+  late String in_unit;
+  late String out_unit;
+  late List<String> unit_list;
   String input_value = '0';
   String output_value = '0';
-  String in_unit = 'm';
-  String out_unit = 'km';
+  _ConverterState(this.measurement) {
+    title = measurement;
+    CF = ConvertFunct(measurement);
+    in_unit = CF.ini_in_unit;
+    out_unit = CF.ini_out_unit;
+    unit_list = List.from(CF.unit_list);
+  }
 
   void equals() {
     print('equals');
     setState(() {
-      output_value =
-          CF.conLength(num.parse(input_value), in_unit, out_unit).toString();
+      output_value = CF.converter(input_value, in_unit, out_unit).toString();
     });
   }
 
@@ -111,7 +121,7 @@ class _ConverterState extends State<Converter> {
             Padding(
               padding: const EdgeInsets.only(right: 10),
               child: Text(
-                'Distance',
+                title,
                 style: TextStyle(fontSize: 25),
               ),
             ),
@@ -177,7 +187,7 @@ class _ConverterState extends State<Converter> {
                                 in_unit = newValue!;
                               });
                             },
-                            items: CF.length_unit
+                            items: unit_list
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -246,7 +256,7 @@ class _ConverterState extends State<Converter> {
                                 out_unit = newValue!;
                               });
                             },
-                            items: CF.length_unit
+                            items: unit_list
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
