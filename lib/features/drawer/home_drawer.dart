@@ -1,7 +1,7 @@
 import 'package:converter_app/core/app_export.dart';
 import 'package:flutter/material.dart';
 
-class converter_drawer extends StatelessWidget {
+class home_drawer extends StatelessWidget {
   final List drawer_content = [
     ["Distance", ImageConstant.imgImage16, AppRoutes.Distance],
     ["Speed", ImageConstant.imgImage12, AppRoutes.Speed],
@@ -9,9 +9,6 @@ class converter_drawer extends StatelessWidget {
     ["Mass", ImageConstant.imgImage14, AppRoutes.Mass],
     ["Time", ImageConstant.imgImage17, AppRoutes.Time]
   ];
-  final String converter;
-
-  converter_drawer({required this.converter});
 
   @override
   Widget build(BuildContext context) {
@@ -24,32 +21,15 @@ class converter_drawer extends StatelessWidget {
           padding: EdgeInsets.all(20),
           color: Colors.blue[600],
           child: Text(
-            converter,
+            "Home",
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
-        ),
-        ListTile(
-          leading: const Icon(Icons.home), //Change icons here
-          title: const Text('Home'),
-          onTap: () {
-            Navigator.pushNamed(context, AppRoutes.homeScreen);
-          }, //Insert navigation action here
-        ),
-        const Divider(
-          height: 20,
-          thickness: 1,
-          indent: 20,
-          endIndent: 20,
-          color: Colors.black,
         ),
         ListView.builder(
             itemCount: drawer_content.length,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              if (drawer_content[index][0] == converter) {
-                return SizedBox.shrink();
-              }
               return DrawerList(
                   destination: drawer_content[index][0],
                   userImage: drawer_content[index][1],

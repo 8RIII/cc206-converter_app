@@ -5,14 +5,17 @@ import 'package:flutter/material.dart';
 
 class Converter extends StatefulWidget {
   final String measurement;
-  const Converter({Key? key, required this.measurement}) : super(key: key);
+  final String icon;
+  const Converter({Key? key, required this.measurement, required this.icon})
+      : super(key: key);
 
   @override
-  _ConverterState createState() => _ConverterState(measurement);
+  _ConverterState createState() => _ConverterState(measurement, icon);
 }
 
 class _ConverterState extends State<Converter> {
   final String measurement;
+  final String icon;
   late String title;
   late ConvertFunct CF;
   late String selectedUnit;
@@ -21,7 +24,7 @@ class _ConverterState extends State<Converter> {
   late List<String> unit_list;
   String input_value = '0';
   String output_value = '';
-  _ConverterState(this.measurement) {
+  _ConverterState(this.measurement, this.icon) {
     title = measurement;
     CF = ConvertFunct(measurement);
     in_unit = CF.ini_in_unit;
@@ -126,11 +129,12 @@ class _ConverterState extends State<Converter> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 30.0),
-              child: Icon(
-                Icons.social_distance_outlined,
+              padding: const EdgeInsets.only(right: 0),
+              child: Image.asset(
+                icon,
+                width: 40,
+                height: 40,
                 color: Colors.white,
-                size: 40,
               ),
             ),
           ],

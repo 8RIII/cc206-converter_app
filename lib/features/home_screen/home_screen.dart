@@ -1,4 +1,5 @@
 import 'package:converter_app/core/app_export.dart';
+import 'package:converter_app/features/drawer/home_drawer.dart';
 import 'package:converter_app/widgets/app_bar/appbar_leading_image.dart';
 import 'package:converter_app/widgets/app_bar/appbar_title.dart';
 import 'package:converter_app/widgets/app_bar/appbar_trailing_image.dart';
@@ -18,6 +19,7 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: _buildAppBar(context),
+        drawer: home_drawer(),
         body: SizedBox(
           width: mediaQueryData.size.width,
           child: SingleChildScrollView(
