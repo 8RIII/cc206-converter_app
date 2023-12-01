@@ -20,7 +20,7 @@ class _ConverterState extends State<Converter> {
   late String out_unit;
   late List<String> unit_list;
   String input_value = '0';
-  String output_value = '0';
+  String output_value = '';
   _ConverterState(this.measurement) {
     title = measurement;
     CF = ConvertFunct(measurement);
@@ -40,7 +40,7 @@ class _ConverterState extends State<Converter> {
     print('clear');
     setState(() {
       input_value = '0';
-      output_value = '0';
+      output_value = '';
     });
   }
 
@@ -137,7 +137,7 @@ class _ConverterState extends State<Converter> {
         ),
         backgroundColor: Color.fromRGBO(39, 76, 119, 1.0),
       ),
-      drawer: converter_drawer(),
+      drawer: converter_drawer(converter: measurement),
       body: Column(
         children: [
           Row(

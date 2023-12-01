@@ -1,5 +1,4 @@
 import 'package:converter_app/features/components/calculator_buttons.dart';
-import 'package:converter_app/features/converter_codes/converter_class.dart';
 import 'package:converter_app/core/app_export.dart';
 import 'package:flutter/material.dart';
 
