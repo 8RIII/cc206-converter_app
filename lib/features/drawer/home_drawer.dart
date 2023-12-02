@@ -21,6 +21,17 @@ class home_drawer extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
+        ListTile(
+          contentPadding: EdgeInsets.only(left: 20),
+          title: const Text('Convertions'), 
+        ),
+        const Divider(
+          height: 20,
+          thickness: 1,
+          indent: 20,
+          endIndent: 20,
+          color: Colors.black,
+        ),
         ListView.builder(
             itemCount: drawer_content.length,
             shrinkWrap: true,

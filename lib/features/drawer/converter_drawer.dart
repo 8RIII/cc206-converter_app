@@ -15,7 +15,6 @@ class converter_drawer extends StatelessWidget {
         child: ListView(
       children: [
         Container(
-          //Insert lang gi icon kung kinahanglan
           margin: EdgeInsets.only(bottom: 10),
           padding: EdgeInsets.all(20),
           color: Colors.blue[600],
@@ -46,12 +45,15 @@ class converter_drawer extends StatelessWidget {
               if (drawer_content[index][0] == converter) {
                 return SizedBox.shrink();
               }
-              return DrawerList(
-                  destination: drawer_content[index][0],
-                  userImage: drawer_content[index][1],
-                  onTap: () {
-                    Navigator.pushNamed(context, drawer_content[index][2]);
-                  });
+              return Container(
+                margin: EdgeInsets.only(left: 0.h),
+                child: DrawerList(
+                    destination: drawer_content[index][0],
+                    userImage: drawer_content[index][1],
+                    onTap: () {
+                      Navigator.pushNamed(context, drawer_content[index][2]);
+                    }),
+              );
             })
 
         //Future Destinations
@@ -84,13 +86,15 @@ class DrawerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      contentPadding: EdgeInsets.only(left: 20),
       leading: CustomImageView(
         imagePath: userImage,
         fit: BoxFit.contain,
         height: 29.v,
         width: 34.h,
         margin: EdgeInsets.only(
-          left: 13.h,
+          right: 0,
+          left: 0.h,
           top: 2.v,
           bottom: 2.v,
         ),
