@@ -2,6 +2,8 @@ import 'package:converter_app/features/components/calculator_keypad.dart';
 import 'package:converter_app/features/converter_codes/converter_class.dart';
 import 'package:converter_app/features/drawer/converter_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class Converter extends StatefulWidget {
   final String measurement;
@@ -13,14 +15,15 @@ class Converter extends StatefulWidget {
 }
 
 class _ConverterState extends State<Converter> {
-  final String measurement;
-  late String icon;
+  List savedData = [];
+  String measurement;
+  String icon = '';
   late String title;
   late ConvertFunct CF;
   late String selectedUnit;
   late String in_unit;
   late String out_unit;
-  late List<String> unit_list;
+  List<String> unit_list = [];
   String input_value = '0';
   String output_value = '';
   _ConverterState(this.measurement) {
@@ -30,13 +33,36 @@ class _ConverterState extends State<Converter> {
     out_unit = CF.ini_out_unit;
     unit_list = List.from(CF.unit_list);
     icon = CF.icon;
+    _loadSavedData();
+  }
+
+  Future<void> _loadSavedData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String jsonString = prefs.getString('myData') ?? '[]';
+    List<dynamic> decodedList = jsonDecode(jsonString);
+
+    setState(() {
+      savedData = decodedList.map((list) => List<String>.from(list)).toList();
+    });
+  }
+
+  // Save data to SharedPreferences
+  Future<void> _saveData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String jsonString = jsonEncode(savedData);
+    prefs.setString('myData', jsonString);
+    _loadSavedData(); // Reload the data after saving
   }
 
   void equals() {
     print('equals');
     setState(() {
       output_value = CF.converter(input_value, in_unit, out_unit).toString();
+      if(savedData.length == 10){
+        List<String> remove = savedData.removeAt(0);}
+      savedData.add([measurement, input_value, in_unit, output_value, out_unit]);
     });
+    _saveData();
   }
 
   void clear() {
@@ -54,16 +80,33 @@ class _ConverterState extends State<Converter> {
         input_value = '0';
       } else if (input_value != '0') {
         input_value = input_value.substring(0, input_value.length - 1);
+
       }
     });
   }
 
   void undo() {
-    print('undo');
+    print(savedData);
+    if(savedData.isNotEmpty){
+      setState(() {
+        List<String> removed = savedData.removeLast();
+        measurement = removed[0];
+        title = measurement;
+        CF = ConvertFunct(measurement);
+        unit_list = List.from(CF.unit_list);
+        icon = CF.icon;
+
+        input_value = removed[1];
+        in_unit = removed[2];
+        output_value = removed[3];
+        out_unit = removed[4];
+      });
+    }
   }
 
   void swap() {
     print('swap');
+    equals();
     setState(() {
       String placeholder = input_value;
       input_value = output_value;
@@ -187,9 +230,14 @@ class _ConverterState extends State<Converter> {
                               child: DropdownButton<String>(
                             value: in_unit,
                             onChanged: (String? newValue) {
-                              setState(() {
-                                in_unit = newValue!;
-                              });
+                              if(out_unit != newValue){
+                                setState(() {
+                                  in_unit = newValue!;
+                                  equals();
+                              });}
+                              else{
+                                swap();
+                                }
                             },
                             items: unit_list
                                 .map<DropdownMenuItem<String>>((String value) {
@@ -250,9 +298,13 @@ class _ConverterState extends State<Converter> {
                               child: DropdownButton<String>(
                             value: out_unit,
                             onChanged: (String? newValue) {
+                              if(in_unit != newValue){
                               setState(() {
                                 out_unit = newValue!;
-                              });
+                                equals();
+                              });}
+                              else
+                                swap();
                             },
                             items: unit_list
                                 .map<DropdownMenuItem<String>>((String value) {
