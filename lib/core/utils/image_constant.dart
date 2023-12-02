@@ -23,5 +23,17 @@ class ImageConstant {
 
   static String imgImage18 = '$imagePath/img_image_18.png';
 
+  static String imgImage19 = '$imagePath/img_image_19.png';
+
+  static String imgImage20 = '$imagePath/img_image_20.png';
+
+  static String imgImage21 = '$imagePath/img_image_21.png';
+
+  static String imgImage22 = '$imagePath/img_image_22.png';
+
+  static String imgImage23 = '$imagePath/img_image_23.png';
+
+  static String imgImage24 = '$imagePath/img_image_24.png';
+
   static String imageNotFound = 'assets/images/image_not_found.png';
 }

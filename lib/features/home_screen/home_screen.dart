@@ -60,15 +60,6 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: 16.v),
                   _buildButton(
                     context,
-                    userImage: ImageConstant.imgImage15,
-                    something: "Storage (bytes)",
-                    onTap: () {
-                      //Navigator.pushNamed(context,AppRoutes.Distance);
-                    },
-                  ),
-                  SizedBox(height: 16.v),
-                  _buildButton(
-                    context,
                     userImage: ImageConstant.imgImage16,
                     something: "Distance",
                     onTap: () {
@@ -87,30 +78,57 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: 16.v),
                   _buildButton(
                     context,
-                    userImage: ImageConstant.imgImage18,
-                    something: "...",
+                    userImage: ImageConstant.imgImage21,
+                    something: "ElectricCurrent",
                     onTap: () {
-                      //Navigator.pushNamed(context,AppRoutes.Distance);
+                      Navigator.pushNamed(context,AppRoutes.ElectricCurrent);
                     },
                   ),
                   SizedBox(height: 16.v),
                   _buildButton(
                     context,
-                    userImage: ImageConstant.imgImage18,
-                    something: "...",
+                    userImage: ImageConstant.imgImage20,
+                    something: "ElectricCharge",
                     onTap: () {
-                      //Navigator.pushNamed(context,AppRoutes.Distance);
+                      Navigator.pushNamed(context,AppRoutes.ElectricCharge);
                     },
                   ),
                   SizedBox(height: 16.v),
                   _buildButton(
                     context,
-                    userImage: ImageConstant.imgImage18,
-                    something: "...",
+                    userImage: ImageConstant.imgImage23,
+                    something: "Area",
                     onTap: () {
-                      //Navigator.pushNamed(context,AppRoutes.Distance);
+                      Navigator.pushNamed(context,AppRoutes.Area);
                     },
                   ),
+                  SizedBox(height: 16.v),
+                  _buildButton(
+                    context,
+                    userImage: ImageConstant.imgImage22,
+                    something: "Volume",
+                    onTap: () {
+                      Navigator.pushNamed(context,AppRoutes.Volume);
+                    },
+                  ),
+                  SizedBox(height: 16.v),
+                  _buildButton(
+                    context,
+                    userImage: ImageConstant.imgImage19,
+                    something: "Force",
+                    onTap: () {
+                      Navigator.pushNamed(context,AppRoutes.Force);
+                    },
+                  ),
+                  SizedBox(height: 16.v),
+                  _buildButton(
+                    context,
+                    userImage: ImageConstant.imgImage24,
+                    something: "Frequency",
+                    onTap: () {
+                      Navigator.pushNamed(context,AppRoutes.Frequency);
+                    },
+                  )
                 ],
               ),
             ),
