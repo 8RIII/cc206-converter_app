@@ -6,7 +6,7 @@ import 'package:converter_app/core/app_export.dart';
 
 class AppRoutes {
   static const String homeScreen = '/home_screen';
-  static const String Distance = '/distance';
+  static const String Length = '/length';
   static const String Speed = '/speed';
   static const String Temperature = '/temperature';
   static const String Mass = '/mass';
@@ -20,7 +20,7 @@ class AppRoutes {
 
   static Map<String, WidgetBuilder> routes = {
     homeScreen: (context) => HomeScreen(),
-    Distance: (context) => Converter(measurement: "Distance"),
+    Length: (context) => Converter(measurement: "Length"),
     Speed: (context) => Converter(measurement: "Speed"),
     Temperature: (context) => Converter(measurement: "Temperature"),
     Mass: (context) => Converter(measurement: "Mass"),

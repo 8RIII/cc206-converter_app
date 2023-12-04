@@ -61,9 +61,9 @@ class HomeScreen extends StatelessWidget {
                   _buildButton(
                     context,
                     userImage: ImageConstant.imgImage16,
-                    something: "Distance",
+                    something: "Length",
                     onTap: () {
-                      Navigator.pushNamed(context, AppRoutes.Distance);
+                      Navigator.pushNamed(context, AppRoutes.Length);
                     },
                   ),
                   SizedBox(height: 16.v),

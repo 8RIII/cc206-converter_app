@@ -21,7 +21,7 @@ class ConvertFunct {
   final List<String> Frequency_unit = ['Hz', 'kHz', 'MHz', 'rad/s', 'deg/s', 'rpm'];
 
   late List convertion_list = [ //Title, icon, routes, units_list
-    ["Distance", ImageConstant.imgImage16, AppRoutes.Distance, length_unit],
+    ["Length", ImageConstant.imgImage16, AppRoutes.Length, length_unit],
     ["Speed", ImageConstant.imgImage12, AppRoutes.Speed, Speed_unit],
     ["Temperature", ImageConstant.imgImage13, AppRoutes.Temperature, Temperature_unit],
     ["Mass", ImageConstant.imgImage14, AppRoutes.Mass, Mass_unit],
@@ -36,7 +36,7 @@ class ConvertFunct {
 
   ConvertFunct(this.measurement) {
     switch (measurement) {
-      case "Distance":
+      case "Length":
         converter = conLength;
         ini_in_unit = "m";
         ini_out_unit = "km";
